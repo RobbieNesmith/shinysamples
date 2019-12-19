@@ -21,7 +21,7 @@ namespace Samples.Infrastructure
             this.Logs = new ObservableList<TItem>();
             this.hasLogs = this.Logs
                 .WhenCollectionChanged()
-                .Select(_ => this.Logs.Any())
+                .Select(_ => this.Logs.Count > 0)
                 .ToProperty(this, x => x.HasLogs);
 
             this.Load = ReactiveCommand.CreateFromTask(async () =>
